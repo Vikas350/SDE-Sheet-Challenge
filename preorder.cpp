@@ -10,21 +10,23 @@ public:
     TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
 };
 
-void postorder(TreeNode *root, vector<int> &ans)
+void preorder(TreeNode *root, vector<int> &ans)
 {
     if (root == NULL)
         return;
 
-    postorder(root->left, ans);
-
-    postorder(root->right, ans);
-
     ans.push_back(root->data);
+
+    preorder(root->left, ans);
+
+    preorder(root->right, ans);
+
+    
 }
-vector<int> getPostOrderTraversal(TreeNode *root)
+vector<int> getPreOrderTraversal(TreeNode *root)
 {
     // Write your code here.
     vector<int> ans;
-    postorder(root, ans);
+    preorder(root, ans);
     return ans;
 }
